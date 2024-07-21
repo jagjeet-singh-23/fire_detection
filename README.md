@@ -18,6 +18,7 @@
 ## How to run the model
 
 - run the following command inside the terminal:
+
   ```bash
   cd fire_detection
   python ultralytics/yolo/v8/detect.predict.py model="best.pt" source=0 show=True
