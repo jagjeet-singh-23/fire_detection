@@ -12,6 +12,8 @@ from ultralytics.yolo.utils.plotting import Annotator, colors, save_one_box
 
 
 class DetectionPredictor(BasePredictor):
+    Alarm_status = False
+
     def play_alarm_sound_function(self):
         while True:
             playsound.playsound(
@@ -90,7 +92,9 @@ class DetectionPredictor(BasePredictor):
             if (
                 self.args.save or self.args.save_crop or self.args.show
             ):  # Add bbox to image
-                threading.Thread(target=self.play_alarm_sound_function).start()
+                if not self.Alarm_status:
+                    threading.Thread(target=self.play_alarm_sound_function).start()
+                    self.Alarm_status = True
                 c = int(cls)  # integer class
                 label = (
                     None
