@@ -2,7 +2,7 @@
 
 import hydra
 import torch
-import playsound
+import pygame
 import threading
 
 from ultralytics.yolo.engine.predictor import BasePredictor
@@ -15,11 +15,12 @@ class DetectionPredictor(BasePredictor):
     Alarm_status = False
 
     def play_alarm_sound_function(self):
-        while True:
-            playsound.playsound(
-                "/home/frustrated-dev/fire_detection/Alarm Sound.mp3", True
-            )
-
+        pygame.mixer.init()
+        pygame.mixer.music.load('/home/raspberry/fire_detection_old/Alarm Sound.mp3')
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy() == True:
+            continue
+        
     def get_annotator(self, img):
         return Annotator(
             img, line_width=self.args.line_thickness, example=str(self.model.names)
