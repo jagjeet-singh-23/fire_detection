@@ -21,5 +21,5 @@
 
   ```bash
   cd fire_detection
-  python ultralytics/yolo/v8/detect.predict.py model="best.pt" source=0 show=True
+  python predict.py model="best.pt" source=0 show=True
   ```
