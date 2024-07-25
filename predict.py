@@ -18,7 +18,7 @@ class DetectionPredictor(BasePredictor):
         pygame.mixer.init()
         pygame.mixer.music.load('/home/raspberry/fire_detection_old/Alarm Sound.mp3')
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
+        while pygame.mixer.music.get_busy():
             continue
         
     def get_annotator(self, img):
